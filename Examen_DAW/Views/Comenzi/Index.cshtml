@@ -1,0 +1,65 @@
+﻿@using Examen_DAW.Models
+@model Comenzi
+@{
+
+	ViewData["Nume"] = "Index";
+}
+
+<h1>@ViewData["Nume"]</h1>
+
+<br />
+
+@if (ViewBag.TempMsg != null)
+{
+    <div class="card">
+        <p>@ViewBag.TempMsg</p>
+    </div>
+
+    <br />
+}
+
+<form action="/Comenzi/Index" method="get">
+    @Html.Label("Search")
+    @Html.TextBox("_Search")
+    @* <input type="text" name="_Search"/> *@
+
+    <button type="submit">Search</button>
+</form>
+
+<br />
+
+<form action="/Comenzi/New" method="get">
+    <button type="submit">New</button>
+</form>
+
+<br />
+
+
+@foreach (Comenzi _Comenzi in ViewBag.Comenzi)
+{
+    <div class="card">
+        <h2>@_Comenzi.Nume</h2>
+
+        <br />
+
+        <form action="/Comenzi/Show/@_Comenzi.Id" method="get">
+            <button type="submit">Show</button>
+        </form>
+
+        <br />
+
+        <form action="/Comenzi/Edit/@_Comenzi.Id" method="get">
+            <button type="submit">Edit</button>
+        </form>
+
+        <br />
+
+        <form action="/Comenzi/Delete/@_Comenzi.Id" method="post">
+            <button type="submit">Delete</button>
+        </form>
+
+        <br />
+    </div>
+
+    <br />
+}

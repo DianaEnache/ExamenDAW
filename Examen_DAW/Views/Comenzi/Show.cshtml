@@ -1,0 +1,24 @@
+﻿@using Examen_DAW.Models
+@model Comenzi
+@{
+
+	ViewData["Nume"] = "Show";
+}
+
+<h1>@ViewData["Nume"]</h1>
+
+<br />
+<h1>@Model.Nume</h1>
+
+<br />
+
+<h2>@Model.Produse.NumeProdus</h2>
+
+<br />
+
+<p>@Model.Adresa</p>
+
+<br />
+<form action="/Articles/Index" method="get">
+	<button type="submit">Back</button>
+</form>

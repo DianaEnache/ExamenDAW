@@ -1,0 +1,38 @@
+﻿@using Examen_DAW.Models
+@model Comenzi
+@{
+
+	ViewData["Nume"] = "Edit";
+}
+
+<h1>@ViewData["Nume"]</h1>
+
+<br />
+
+<form action="/Comenzi/Edit/@Model.Id" method="post" class="card">
+    @Html.LabelFor(_Comenzi => _Comenzi.Nume, "Nume: ")
+    @Html.TextBoxFor(_Comenzi => _Comenzi.Nume)
+    @Html.ValidationMessageFor(_Comenzi => _Comenzi.Nume)
+
+    <br />
+
+    @Html.Label("Adresa", "Adresa: ")
+    @Html.TextBox("Adresa")
+    @Html.ValidationMessage("Adresa")
+
+    <br />
+
+    @Html.Label("ProduseId", "Produse: ")
+    @Html.DropDownList("ProduseId", new SelectList(ViewBag.ProduseList, "Value", "Text"), "Select produs")
+    @Html.ValidationMessage("ProduseId")
+
+    <br />
+
+    <button type="submit">Done</button>
+</form>
+
+<br />
+
+<form action="/Articles/Index" method="get">
+    <button type="submit">Back</button>
+</form>
